@@ -22,7 +22,7 @@ module.exports = function(express) {
 
     res.json({
       'short_url':'http://ur.l/'+shortUrl,
-      'long_url':longUrl
+      'long_url_id':longUrl
     });
   });
 
