@@ -24,8 +24,6 @@ Next phase, when we get the user's input URL and add it to a URL object in the D
 
 To run the application, run `npm start`.
 
-In the next iteration, this will just use an npm command, from package.json
-
 ##Endpoints
 
 Endpoints for the API are
@@ -37,3 +35,5 @@ Endpoints for the API are
 - `POST /api/v1/urls/:id` update an existing URL in the database
 
 - `DELETE /api/v1/urls/:id` deletes a shortened URL from the database
+
+- `GET /go/:shortURL` takes a user to the original URL link
