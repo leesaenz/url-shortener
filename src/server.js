@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 //Setting the base API route to api/v1
-app.use('/api/v1', require('./routes/v1/api.js')(express));
+app.use('/', require('./routes')(express));
 
 var server = app.listen(port, function() {
   console.log('Server is running on port', port);
