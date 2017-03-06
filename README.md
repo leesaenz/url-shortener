@@ -22,7 +22,7 @@ Next phase, when we get the user's input URL and add it to a URL object in the D
 
 ## Running the App
 
-To run the application, use `nodemon src/server.js`.
+To run the application, run `npm start`.
 
 In the next iteration, this will just use an npm command, from package.json
 
