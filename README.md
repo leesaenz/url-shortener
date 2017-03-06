@@ -22,7 +22,17 @@ Next phase, when we get the user's input URL and add it to a URL object in the D
 
 ## Running the App
 
-To run the application, run `npm start`.
+To run the application
+
+- run `mongod`
+- run `npm start`
+
+In the command terminal, you should see the log
+
+```
+Server is running on port 3000
+Mongo connected...
+```
 
 ##Endpoints
 
