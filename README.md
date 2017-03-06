@@ -30,4 +30,10 @@ In the next iteration, this will just use an npm command, from package.json
 
 Endpoints for the API are
 
-- `GET /api/v1/url` to get your shortened URL back
+- `POST /api/v1/urls` creates a shortened URL
+
+- `GET /api/v1/urls` gets a list of all URLs that have been added to the database 
+
+- `POST /api/v1/urls/:id` update an existing URL in the database
+
+- `DELETE /api/v1/urls/:id` deletes a shortened URL from the database

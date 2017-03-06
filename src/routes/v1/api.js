@@ -9,11 +9,11 @@ module.exports = function(express) {
     res.json({Status: 200});
   });
 
-  router.get('/url', function(req,res) {
+  router.get('/urls', function(req,res) {
     res.json({Status: 200});
   });
 
-  router.get('/url/:url', function(req,res) {
+  router.get('/urls/:url', function(req,res) {
 
     var longUrl = req.params.url;
     var shortUrl = '';
