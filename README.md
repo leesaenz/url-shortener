@@ -20,7 +20,7 @@ Next phase, when we get the user's input URL and add it to a URL object in the D
 `.
 - Run `npm i` to install dependencies
 
-## Running the App
+## Running the App in Local Dev
 
 To run the application
 
