@@ -26,7 +26,29 @@ In this iteration, urls will be added, updated, read, and deleted from the datab
 GET /api/v1/urls
 ```
 ```
-
+Returns:
+{
+  "urls": [
+    {
+      "_id": "58c1d09fa28fa39cbd04db27",
+      "longurl": "www.rottentomatoes.com",
+      "shorturl": "3CE9QB2u",
+      "__v": 0
+    },
+    {
+      "_id": "58c1d177010aa89cd1542f84",
+      "longurl": "www.adobe.com",
+      "shorturl": "74kda048dz",
+      "__v": 0
+    },
+    {
+      "_id": "58c1d18e010aa89cd1542f85",
+      "longurl": "www.adobe.com",
+      "shorturl": "MobafEUhe",
+      "__v": 0
+    }
+  ]
+}
 ```
 
 ####POST (CREATE)
@@ -34,6 +56,10 @@ GET /api/v1/urls
 POST /api/v1/urls
 ```
 ```
+Returns
+{
+  "URL added! :)"
+}
 
 ```
 
@@ -42,6 +68,10 @@ POST /api/v1/urls
 POST /api/v1/urls/id
 ```
 ```
+Returns
+{
+  "URL udpated!"
+}
 
 ```
 
@@ -50,7 +80,10 @@ POST /api/v1/urls/id
 POST /api/v1/urls/id
 ```
 ```
-
+Returns
+{
+  "Deleted URL! :)"
+}
 ```
 
 ## Installation
