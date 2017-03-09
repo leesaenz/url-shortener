@@ -42,7 +42,7 @@ module.exports = function(express) {
           var id = Number(id);
           shortURL = shorten.shorten(id);
 
-          mongoose.model('Url').create({
+          mongoose.model('Url').update({
               shorturl:shortURL
           },
             function(err,urlID) {
