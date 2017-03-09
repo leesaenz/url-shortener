@@ -88,11 +88,24 @@ module.exports = function(express) {
 
   //Editing an existing URL based on body request
   .put(function(req,res) {
-    var longurl = req.body.longurl;
-    var shorturl = req.body.shorturl;
 
     //Find the document by ID
-    mongoose.model('Url').findById(req.id, function (err,url) {
+    mongoose.model('Url').findById(req.params.id, function (err,url) {
+      //If the body request for longurl exists, then update it
+      if(req.body.longurl) {
+        var longurl = req.body.longurl;
+      } else {
+        //If not, then it stays equal to its previous value for update
+        var longurl = url.longurl;
+      }
+      //If the request body for shorturl exists, then update it
+      if(req.body.shorturl) {
+        var shorturl = req.body.shorturl;
+      } else {
+        //If not, it's value stays the same as it was
+        shorturl = url.shorturl;
+      }
+      //Update the DB entry for this particular URL we are working with
       url.update({
         longurl: longurl,
         shorturl: shorturl
@@ -105,12 +118,14 @@ module.exports = function(express) {
       });
     });
   })
-
+  //Now delete the entry based on the ID
   .delete(function(req,res){
+    //Find it in the DB
     mongoose.model('Url').findById(req.params.id,function (err,url) {
       if(err) {
         return console.error(err);
       } else {
+        //Delete it
         url.remove(function (err,url) {
           if(err) {
             return console.error(err);
