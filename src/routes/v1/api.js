@@ -42,10 +42,9 @@ module.exports = function(express) {
           var id = Number(id);
           shortURL = shorten.shorten(id);
 
-          mongoose.model('Url').findById(url._id, function (err,url) {
-            url.update({
+          mongoose.model('Url').create({
               shorturl:shortURL
-            },
+          },
             function(err,urlID) {
               if(err) {
                 res.send("Problem");
@@ -54,24 +53,23 @@ module.exports = function(express) {
                 res.send("URL added! :)");
                 //res.json(url);
               }
-            });
           });
         }
-      }
-    );
+    });
   });
 
   router.route('/urls/:id')
   .get(function(req,res) {
-    mongoose.model('Url').findById(req.id, function (err, url) {
+    mongoose.model('Url').findById(req.params.id, function (err, url) {
       if (err) {
         console.log('GET Error: There was a problem retrieving: ' + err);
       } else {
         //Return the blob
         res.json(url);
       }
+    });
   })
-    
+
   .delete(function(req,res){
     mongoose.model('Url').findById(req.params.id,function (err,url) {
       if(err) {
