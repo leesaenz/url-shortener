@@ -20,6 +20,8 @@ const url = require('../models/url.js');
 //Setting the port at 3000
 const port = process.env.PORT || 3000;
 
+console.log = function() {}
+
 //Telling express to use the body parser for JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
