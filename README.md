@@ -92,7 +92,7 @@ Returns
 `.
 - Run `npm i` to install dependencies
 
-## Running the App in Local Dev
+## Running the App in Development Mode
 
 To run the application
 
@@ -102,8 +102,21 @@ To run the application
 In the command terminal, you should see the log
 
 ```
-Server is running on port 3000
-Mongo connected...
+Server is running in development on port 3000
+Mongo connected in development...
+```
+
+## Ruynning the App in Production Mode
+
+To run the application in production
+-run `mongod`
+-run `npm run prod`
+
+In the command terminal, you should see the log
+
+```
+Server is running in production on port 3000
+Mongo connected in production...
 ```
 
 ##Endpoints
