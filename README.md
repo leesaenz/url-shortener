@@ -123,6 +123,10 @@ Mongo connected in production...
 
 To lint the app, run `npm run lint`
 
+## Unit Testing
+
+To run Mocha unit tests in the app, run `npm test`
+
 ##Endpoints
 
 Endpoints for the API are
