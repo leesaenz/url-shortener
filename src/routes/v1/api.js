@@ -71,7 +71,7 @@ module.exports = (express) => {
               } else {
                 // Else console log that bad boy
                 logger.info('Long URL: ' + longUrl + '\n Long URL Entry: ' + url.longurl + '\n ID: ' + url.id + '\n Short URL: ' + url.shorturl + '\n' + shortURL);
-                res.send('URL successfully added to Mongo database!');
+                res.status(200).send('URL successfully added to Mongo database!');
               }
             });
         }
