@@ -9,7 +9,10 @@
   "rules": {
     "new-cap": 0,
     "prefer-template": 0,
-    "global-require": 0
+    "global-require": 0,
+    "import/no-extraneous-dependencies": [2, { 
+      "devDependencies": true 
+    }]
   },
   "globals": {
     "describe": true,
