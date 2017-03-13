@@ -1,5 +1,7 @@
 const winston = require('winston');
 
+const env = process.env.NODE_ENV;
+
 const logger = new winston.Logger({
   transports: [
     new (winston.transports.Console)({

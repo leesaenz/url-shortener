@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('../components/logger.js');
+// Setting env as the current NODE_ENV
+const env = process.env.NODE_ENV;
 
 const app = express();
 
@@ -13,7 +15,9 @@ const db = mongoose.connection;
 // db.on('error', logger.log('Mongo connection error in development'));
 
 db.once('open', () => {
-  logger.info('Mongo connected %s', 'in production...');
+  if (env === 'development') {
+    logger.info('Mongo connected %s', 'in production...');
+  }
 });
 
 // Configuring the Server
@@ -31,7 +35,9 @@ app.use(bodyParser.urlencoded({
 app.use('/', require('../routes')(express));
 
 const server = app.listen(port, () => {
-  logger.info('Server is running in production on port', port);
+  if (env === 'development') {
+    logger.info('Server is running in production on port', port);
+  }
 });
 
 module.exports = server;
