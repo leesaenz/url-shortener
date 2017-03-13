@@ -119,6 +119,10 @@ Server is running in production on port 3000
 Mongo connected in production...
 ```
 
+## ESLinting
+
+To lint the app, run `npm run lint`
+
 ##Endpoints
 
 Endpoints for the API are
