@@ -8,7 +8,8 @@
   "scripts": {
     "start": "open http://localhost:3000/ & export NODE_ENV=development && nodemon src/server.js",
     "prod": "open http://localhost:3000/ & export NODE_ENV=production && nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "keywords": [],
   "author": "Lee Saenz",
@@ -16,7 +17,8 @@
   "dependencies": {
     "body-parser": "^1.17.0",
     "express": "^4.15.0",
-    "mongoose": "^4.8.6"
+    "mongoose": "^4.8.6",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "eslint": "^3.17.1",

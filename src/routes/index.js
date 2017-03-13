@@ -1,34 +1,34 @@
-//Including the shorten component so we can shorten URLs.
-const shorten = require('../components/shorten.js');
-//Including mongoose
-const mongoose = require('mongoose');
+// Including mongoose
+// const mongoose = require('mongoose');
+const logger = require('../components/logger.js');
+const Url = require('../models/url.js');
 
 module.exports = (express) => {
-
   const router = express.Router();
 
-  router.get('/', (req,res) => {
-    console.log('Home of API');
+  router.get('/', (req, res) => {
+    logger.info('Homepage of API Works!');
     res.json({
-      healthy:true
-    })
+      healthy: true,
+    });
   });
 
   router.use('/api/v1/', require('./v1/api.js')(express));
 
   router.route('/go/:shorturl')
-  .get(function(req,res){
-     mongoose.model('Url').findOne({'shorturl': req.params.shorturl}, function (err, url) {
-      var redirect = url.longurl;
+  .get((req, res) => {
+    const u = { shorturl: req.params.shorturl };
+    Url.findOne(u, (err, url) => {
+      const redirect = url.longurl;
       if (err) {
-        console.log('GET Error: There was a problem retrieving: ' + err);
+        logger.error('GET Error: There was a problem retrieving: ' + err);
       } else {
-        console.log("Long URL: " + redirect);
+        logger.info('Long URL: ' + redirect);
         res.json(redirect);
       }
-      //res.redirect(redirect);
+      // res.redirect(redirect);
     });
   });
 
   return router;
-}
+};

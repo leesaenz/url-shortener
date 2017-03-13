@@ -1,36 +1,37 @@
-//Storing package requirements
+// Storing package requirements
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const mongoose = require('mongoose');
+const logger = require('../components/logger.js');
 
-const mongoose   = require('mongoose');
+const app = express();
 
 mongoose.connect('mongodb://localhost:27017/urls');
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'Mongo connection error in development'));
+// I'm not sure how to get this statement working with the custom logger.
+// db.on('error', logger.log('Mongo connection error in development'));
 
-db.once('open', function() {
-  console.log('Mongo connected in development...');
+db.once('open', () => {
+  logger.info('Mongo connected %s', 'in development...');
 });
 
-const url = require('../models/url.js');
-//Configuring the Server
+// Configuring the Server
 
-//Setting the port at 3000
+// Setting the port at 3000
 const port = process.env.PORT || 3000;
 
-//Telling express to use the body parser for JSON
+// Telling express to use the body parser for JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
-//Setting the base API route to api/v1
+// Setting the base API route to api/v1
 app.use('/', require('../routes')(express));
 
-var server = app.listen(port, function() {
-  console.log('Server is running in development on port', port);
+const server = app.listen(port, () => {
+  logger.info('Server is running in development on port', port);
 });
 
 module.exports = server;

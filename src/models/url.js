@@ -1,10 +1,11 @@
-//Creates Movie Model Schema
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// Creates Movie Model Schema
+const mongoose = require('mongoose');
 
-var urlSchema = new Schema({
-  longurl : String,
-  shorturl    : String
+const Schema = mongoose.Schema;
+
+const urlSchema = new Schema({
+  longurl: String,
+  shorturl: String,
 });
 
 module.exports = mongoose.model('Url', urlSchema);

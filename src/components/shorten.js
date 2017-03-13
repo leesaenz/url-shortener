@@ -1,18 +1,16 @@
-var alpha = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
-var sum = alpha.length;
+const alpha = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+const sum = alpha.length;
 
-function shorten(num){
-  var shortUrl = '';
-  var num = num.toString().replace(/\W/g, '');
-  var num = Number(num);
+function shorten(num) {
+  let n = num;
+  let shortUrl = '';
 
-  while (num){
-    var remainder = num % sum;
-    num = Math.floor(num / sum);
+  while (n) {
+    const remainder = n % sum;
+    n = Math.floor(n / sum);
     shortUrl = alpha[remainder].toString() + shortUrl;
   }
 
-  console.log(shortUrl);
   return shortUrl;
 }
 
