@@ -3,7 +3,7 @@ const shorten = require('../../components/shorten.js');
 // Including mongoose
 const mongoose = require('mongoose');
 // Including Logger Tool
-const logger = require('../../components/logger.js');
+const logger = require('lee-fs-utility-debugger');
 // Including Model for URL
 const Url = require('../../models/url.js');
 

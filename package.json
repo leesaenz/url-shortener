@@ -20,16 +20,16 @@
     "mongoose": "^4.8.6"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "lee-fs-utility-debugger": "^1.0.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
     "winston": "^2.3.1"
   }
 }

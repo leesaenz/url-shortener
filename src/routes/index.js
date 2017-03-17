@@ -1,6 +1,6 @@
 // Including mongoose
 // const mongoose = require('mongoose');
-const logger = require('../components/logger.js');
+const logger = require('lee-fs-utility-debugger');
 const Url = require('../models/url.js');
 
 module.exports = (express) => {

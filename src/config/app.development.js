@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const logger = require('../components/logger.js');
+const logger = require('lee-fs-utility-debugger');
 
 const app = express();
 
