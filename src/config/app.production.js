@@ -2,7 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const logger = require('../components/logger.js');
+const logger = require('lee-fs-utility-debugger');
+
 // Setting env as the current NODE_ENV
 const env = process.env.NODE_ENV;
 
