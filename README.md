@@ -127,18 +127,7 @@ To lint the app, run `npm run lint`
 
 To run Mocha unit tests in the app, run `npm test`
 
-## Deployment
 
-To deploy the application to Digital Ocean production, run
-`git push production master` and it will deploy master to prod.
-
-This will run a git/hooks script on the server in a bare repo called app.git that will
-- set the GIT_WORK_TREE
-- set the NODE_ENV to production
-- checkout the repo into the public directory
-- remove node_modules in the app and reinstall them
-- make the logs directory and files if they don't exist
-- restart the server
 
 ## Endpoints
 
@@ -153,3 +142,35 @@ Endpoints for the API are
 - `DELETE /api/v1/urls/:id` deletes a shortened URL from the database
 
 - `GET /go/:shortURL` takes a user to the original URL link
+
+### Workflow
+
+- pull dev
+- create a feature branch off of a freshly pulled dev with `git checkout -b feature-X` where X is the name of your feature
+- Add, commit and push your branch
+- Create a github PR for merge into dev
+- Once your PR is approved and merged into dev, it will deploy to Heroku staging once CI tests complete
+- Staging can be accessed at `https://leeurlshort-stage.herokuapp.com/`
+- Once staging looks good, you may pull origin dev into master
+- Run `git push origin master`
+
+## Deployment to Heroku
+
+- Run `git checkout feature`
+- Run `git pull origin master --force` to pull master into release once tests have passed
+- Run `git push origin release --force` to push to relase branch
+- This will automatically deploy production to Heroku
+- Create a new release version on GitHub
+
+## Deployment to Digital Ocean
+
+To deploy the application to Digital Ocean production, run
+`git push production master` and it will deploy master to prod.
+
+This will run a git/hooks script on the server in a bare repo called app.git that will
+- set the GIT_WORK_TREE
+- set the NODE_ENV to production
+- checkout the repo into the public directory
+- remove node_modules in the app and reinstall them
+- make the logs directory and files if they don't exist
+- restart the server
