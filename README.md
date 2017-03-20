@@ -1,6 +1,6 @@
 # URL Shortener API
 
-This application is a versioned released project for Full Sail that will meet iterations as time goes on.  The purpose of this app is to allow a user to input a URL and have a shortened URL generated for them.
+This application is a versioned released project for Full Sail that will meet iterations as time goes on.  The purpose of this app is to allow a user to input a URL and have a shortened URL generated for them. 
 
 ## Versions
 
