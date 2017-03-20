@@ -127,6 +127,19 @@ To lint the app, run `npm run lint`
 
 To run Mocha unit tests in the app, run `npm test`
 
+## Deployment
+
+To deploy the application to Digital Ocean production, run
+`git push production master` and it will deploy master to prod.
+
+This will run a git/hooks script on the server in a bare repo called app.git that will
+- set the GIT_WORK_TREE
+- set the NODE_ENV to production
+- checkout the repo into the public directory
+- remove node_modules in the app and reinstall them
+- make the logs directory and files if they don't exist
+- restart the server
+
 ## Endpoints
 
 Endpoints for the API are
