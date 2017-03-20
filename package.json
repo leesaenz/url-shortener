@@ -5,6 +5,10 @@
   "repository": "https://github.com/leesaenz/url-shortener.git",
   "private": true,
   "main": "src/server.js",
+  "engines": {
+    "node":"v6.10.0",
+    "npm":"v3.10.10"
+  },
   "scripts": {
     "start": "open http://localhost:3000/ & export NODE_ENV=development && nodemon src/server.js",
     "prod": "export NODE_ENV=production && pm2 start server",
