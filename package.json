@@ -7,7 +7,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "open http://localhost:3000/ & export NODE_ENV=development && nodemon src/server.js",
-    "prod": "open http://localhost:3000/ & export NODE_ENV=production && nodemon src/server.js",
+    "prod": "export NODE_ENV=production && pm2 start server",
     "test": "mocha",
     "lint": "./node_modules/.bin/eslint src"
   },
