@@ -1,17 +1,17 @@
 const expect = require('chai').expect;
 const request = require('supertest');
 const chai = require('chai');
+const server = require('../src/server.js');
 
 const should = chai.should();
 // const server = require('../src/server.js');
 
 describe('CRUD Routes', () => {
-
-  beforeEach(() => {
-    server = require('../src/server.js');
+  beforeEach(() => { // eslint-disable-line
+    server = require('../src/server.js'); // eslint-disable-line
   });
 
-  afterEach(() => {
+  afterEach(() => { // eslint-disable-line
     server.close();
   });
   // Test for Multiple Apps
@@ -23,7 +23,7 @@ describe('CRUD Routes', () => {
       .expect((res) => {
         const urls = res.body;
         // Save one single app from the list to test on in later tests
-        this.url = urls["urls"][0];
+        this.url = urls.urls[0];
 
         // console.log(this.url);
 

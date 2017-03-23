@@ -24,11 +24,12 @@ module.exports = (express) => {
   .get((req, res) => {
     Url.find({}, (err, urls) => {
       if (err) {
-        logger.error(err);
+        logger.log('error', err);
       } else {
         res.json({
           urls,
         });
+        logger.log('info', 'List of URLs successfully returned!');
       }
     });
   })
@@ -49,10 +50,10 @@ module.exports = (express) => {
       (err, url) => {
         if (err) {
           res.send('URL was not added to the DB due to a problem.');
-          logger.error('URL was not added to the DB due to a problem.');
+          logger.log('error', 'URL was not added to the DB due to a problem.');
         } else {
           // Get the DB entry ID
-          const id = url._id;
+          const id = url._id; // eslint-disable-line
           // Strip all of the letters out of it
           const newid = id.toString().replace(/\D/g, '');
           // Make sure it's a number type
@@ -67,10 +68,10 @@ module.exports = (express) => {
             (errr) => {
               if (errr) {
                 res.send('Could not update the ShortURL during creation!');
-                logger.error('Could not update the ShortURL during creation!');
+                logger.log('error', 'Could not update the ShortURL during creation!');
               } else {
                 // Else console log that bad boy
-                logger.info('Long URL: ' + longUrl + '\n Long URL Entry: ' + url.longurl + '\n ID: ' + url.id + '\n Short URL: ' + url.shorturl + '\n' + shortURL);
+                logger.log('info', 'Long URL: ' + longUrl + '\n Long URL Entry: ' + url.longurl + '\n ID: ' + url.id + '\n Short URL: ' + url.shorturl + '\n' + shortURL);
                 res.status(200).send('URL successfully added to Mongo database!');
               }
             });
@@ -84,10 +85,10 @@ module.exports = (express) => {
   .get((req, res) => {
     Url.findById(req.params.id, (err, url) => {
       if (err) {
-        logger.error('GET Error: There was a problem retrieving: ' + err);
+        logger.log('error', 'GET Error: There was a problem retrieving: ' + err);
       } else {
         res.json(url);
-        logger.info('Individual URL successfully returned!');
+        logger.log('info', 'Individual URL successfully returned!');
       }
     });
   })
@@ -98,22 +99,22 @@ module.exports = (express) => {
     Url.findById(req.params.id, (err, url) => {
       // If the body request for longurl exists, then update it
       if (req.body.longurl) {
-        const longurl = req.body.longurl;
+        const longurl = req.body.longurl; // eslint-disable-line
       } else {
         // If not, then it stays equal to its previous value for update
-        const longurl = url.longurl;
+        const longurl = url.longurl; // eslint-disable-line
       }
       // If the request body for shorturl exists, then update it
       if (req.body.shorturl) {
-        const shorturl = req.body.shorturl;
+        const shorturl = req.body.shorturl; // eslint-disable-line
       } else {
         // If not, it's value stays the same as it was
-        const shorturl = url.shorturl;
+        const shorturl = url.shorturl; // eslint-disable-line
       }
       // Update the DB entry for this particular URL we are working with
       url.update({
-        longurl: longurl,
-        shorturl: shorturl,
+        longurl: longurl, // eslint-disable-line
+        shorturl: shorturl, // eslint-disable-line
       }, (errr) => {
         if (errr) {
           res.send('Could not update URL in the database because of ' + errr);
@@ -128,16 +129,16 @@ module.exports = (express) => {
     // Find it in the DB
     mongoose.model('Url').findById(req.params.id, (err, url) => {
       if (err) {
-        logger.error(err);
+        logger.log('error', err);
         res.send(err);
       } else {
         // Delete it
         url.remove((errrr) => {
           if (err) {
-            logger.error(errrr);
+            logger.log('error', errrr);
             res.send(errrr);
           } else {
-            logger.log('DELETED ID: ' + url.id);
+            logger.log('warn', 'DELETED ID: ' + url.id);
             res.send('Deleted URL ' + url.id);
           }
         });
